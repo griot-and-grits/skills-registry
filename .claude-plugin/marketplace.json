@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "griot-grits",
+  "description": "Griot and Grits skill collection for Claude Code",
+  "owner": {
+    "name": "Griot and Grits",
+    "email": "sherard@griotandgrits.org"
+  },
+  "plugins": [
+    {
+      "name": "griot-grits",
+      "description": "All Griot and Grits skills for Claude Code",
+      "category": "productivity",
+      "source": "./plugins/griot-grits",
+      "homepage": "https://github.com/griot-and-grits/skills-registry"
+    }
+  ]
+}
