@@ -36,7 +36,7 @@ skills-registry/
   "description": "Griot and Grits skill collection for Claude Code",
   "owner": {
     "name": "Griot and Grits",
-    "email": "sherard@griotandgrits.org"
+    "email": "info@griotandgrits.org"
   },
   "plugins": [
     {
@@ -58,7 +58,7 @@ skills-registry/
   "description": "Griot and Grits skill collection for Claude Code",
   "author": {
     "name": "Griot and Grits",
-    "email": "sherard@griotandgrits.org"
+    "email": "info@griotandgrits.org"
   }
 }
 ```
@@ -71,7 +71,6 @@ Each skill is a directory containing a single `SKILL.md` with YAML frontmatter:
 ---
 name: skill-name
 description: Use when the user asks to... [trigger conditions]
-version: 1.0.0
 ---
 
 # Skill content here
@@ -80,7 +79,8 @@ version: 1.0.0
 **Frontmatter fields:**
 - `name` (required): Skill identifier, matches directory name
 - `description` (required): Trigger conditions — tells Claude when to invoke this skill
-- `version` (optional): Semantic version
+
+Note: `version` is not a supported frontmatter field in SKILL.md files.
 
 ## Install Flow
 
