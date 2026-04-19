@@ -20,7 +20,6 @@ claude plugins install griot-grits
 ---
 name: skill-name
 description: Use when the user asks to... [trigger conditions]
-version: 1.0.0
 ---
 
 # Skill content here
@@ -34,6 +33,7 @@ version: 1.0.0
 skills-registry/
 ├── .claude-plugin/
 │   └── marketplace.json        ← marketplace endpoint
+├── docs/                       ← design specs and plans
 ├── plugins/
 │   └── griot-grits/
 │       ├── .claude-plugin/

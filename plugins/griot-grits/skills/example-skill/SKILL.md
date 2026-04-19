@@ -1,7 +1,6 @@
 ---
 name: example-skill
 description: Use this as a template when creating new Griot and Grits skills. Demonstrates the required SKILL.md format including frontmatter fields and content structure.
-version: 1.0.0
 ---
 
 # Example Skill
