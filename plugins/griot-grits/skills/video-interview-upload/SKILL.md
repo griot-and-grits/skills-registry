@@ -17,13 +17,19 @@ Processes a new video interview from raw file to published YouTube video, includ
 
 ## Step 0 — Determine the working directory
 
-Resolve the video processing folder using this priority order:
+First, check for a `.env` file. Look in both the current working directory and any path the user passed. If found, load it — it may define `GNG_VIDEO_DIR` and `GNG_YOUTUBE_CREDENTIALS`. A template for this file lives at `references/env.template`.
 
-1. **Explicit path in the skill call** — if the user passed a folder path or file path when invoking the skill (e.g., "process /home/shgriffi/videos/interview.mp4"), use that directory (or the file's parent directory).
-2. **Environment variable** — if `GNG_VIDEO_DIR` is set, use that path.
-3. **Current working directory** — fall back to wherever Claude Code is currently running.
+Then resolve the video processing folder using this priority order:
 
-All subsequent file operations (locating the video, reading the transcript, writing outputs, checking for credentials) are relative to this resolved directory. Tell the user which directory is being used before proceeding.
+1. **Explicit path in the skill call** — if the user passed a folder path or file path (e.g., "process /home/shgriffi/videos/interview.mp4"), use that directory (or the file's parent directory).
+2. **`GNG_VIDEO_DIR`** — from the `.env` file or the shell environment.
+3. **Current working directory** — fall back to wherever Claude Code is running.
+
+Resolve the YouTube credentials path:
+- Use `GNG_YOUTUBE_CREDENTIALS` if set.
+- Otherwise default to `<working_dir>/.youtube_credentials/client_secrets.json`.
+
+Tell the user which directory and credentials path are being used before proceeding.
 
 ---
 
@@ -103,7 +109,7 @@ Show the user the title, description, and tags together and ask for approval or 
 
 ## Step 6 — Upload to YouTube
 
-Check whether `.youtube_credentials/client_secrets.json` exists in the working directory.
+Check whether the resolved credentials path from Step 0 exists.
 
 ---
 
@@ -117,7 +123,7 @@ python scripts/upload_to_youtube.py \
   --title "<approved_title>" \
   --description "<approved_description>" \
   --tags "<comma_separated_tags>" \
-  --credentials ".youtube_credentials/client_secrets.json"
+  --credentials "<resolved_credentials_path>"
 ```
 
 The script will open a browser for OAuth2 on first run (or reuse the cached token), upload as **Public**, **not made for kids**, **Standard YouTube License**, and add the video to the **"Griot and Grits - Black Voices Worth Remembering, Black History Worth Sharing"** playlist. When complete it prints the YouTube video URL — share it with the user, then proceed to Step 7.
