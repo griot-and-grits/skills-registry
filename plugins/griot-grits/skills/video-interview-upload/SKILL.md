@@ -51,17 +51,20 @@ pip install openai-whisper
 
 ## Step 3 — Generate tags
 
-Fetch the current filter list:
+Fetch the current filter list from GitHub:
 ```
 https://raw.githubusercontent.com/griot-and-grits/gng-web/refs/heads/main/metadata/filters.yaml
 ```
 
+If the fetch fails (network unavailable), use the bundled fallback at `references/filters.yaml` instead.
+
 Read the transcript carefully. Select tags from the fetched list that genuinely apply — think about themes, locations, people, historical periods, and topics that a researcher or viewer might use to find this video.
 
 **Rules:**
+- **Use exact names only.** Every tag you select must be copied character-for-character from the YAML file — the `name` field under `tags` or `people`. Do not paraphrase, abbreviate, or invent similar-sounding alternatives. For example, if the list has `"Church Life"` and `"Faith"` as separate entries, do not combine them into `"Faith & Church"`. If the list has `"David E. Reid"`, do not shorten it to `"David Reid"`.
 - Only include tags that clearly fit — don't pad the list
-- For the `people` section: include a person only if they are actually featured/interviewed in the video
-- New tags: only suggest additions if a tag is so obviously essential that its absence from the list is a clear gap. Set a high bar — if in doubt, don't add it. If you do suggest a new tag, mark it clearly so the user can decide whether to add it to filters.yaml
+- For the `people` section: include a person only if they are actually featured/interviewed in the video **and their name appears in the people list**. If the speaker is unnamed or not on the list, do not add them.
+- New tags: only suggest additions if a tag is so obviously essential that its absence is a clear gap. Set a high bar — if in doubt, don't add it. New tag suggestions are separate from the confirmed tag list and clearly marked for the user to decide.
 
 Present the selected tags to the user and confirm before proceeding.
 
