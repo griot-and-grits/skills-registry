@@ -93,7 +93,13 @@ Show the user the title, description, and tags together and ask for approval or 
 
 ## Step 6 — Upload to YouTube
 
-Once the user approves the metadata, run the upload script:
+Check whether `.youtube_credentials/client_secrets.json` exists in the working directory.
+
+---
+
+### Option A — Credentials present (API upload)
+
+Run the upload script:
 
 ```bash
 python scripts/upload_to_youtube.py \
@@ -104,20 +110,58 @@ python scripts/upload_to_youtube.py \
   --credentials ".youtube_credentials/client_secrets.json"
 ```
 
-The script will:
-- Open a browser for OAuth2 the first time (or reuse cached token)
-- Upload the video as **Public**, **not made for kids**, with **Standard YouTube License**
-- Add it to the **"Griot and Grits - Black Voices Worth Remembering, Black History Worth Sharing"** playlist
-
-When the upload completes, the script prints the YouTube video URL. Share it with the user.
+The script will open a browser for OAuth2 on first run (or reuse the cached token), upload as **Public**, **not made for kids**, **Standard YouTube License**, and add the video to the **"Griot and Grits - Black Voices Worth Remembering, Black History Worth Sharing"** playlist. When complete it prints the YouTube video URL — share it with the user, then proceed to Step 7.
 
 ---
 
-## Step 7 — Manual settings in YouTube Studio
+### Option B — No credentials (manual upload guide)
 
-After upload, the user must configure these settings manually in YouTube Studio — they cannot be set via the API:
+Tell the user credentials aren't set up yet, then walk them through uploading manually. Present the metadata in clearly labelled copy-paste blocks so they can work through YouTube Studio without switching windows:
 
-Open the video in YouTube Studio → **Details** tab, then **Show more**:
+---
+
+**Go to:** https://studio.youtube.com → **Create** → **Upload videos** → select `<video_filename>`
+
+While the file uploads, fill in the details:
+
+**Title** (copy exactly):
+```
+<approved_title>
+```
+
+**Description** (copy exactly):
+```
+<approved_description>
+```
+
+**Tags** — in the Tags field, add each of these:
+```
+<tag_1>
+<tag_2>
+...
+```
+
+**Audience:** Select **"No, it's not made for kids"**
+
+Click **More options**:
+- **License:** Standard YouTube License
+- **Category:** People & Blogs (or leave as-is)
+
+Click **Next** through Checks, then on the **Visibility** screen:
+- Set to **Public**
+- Add to playlist: **"Griot and Grits - Black Voices Worth Remembering, Black History Worth Sharing"**
+
+Click **Save**. Copy the video URL from the confirmation screen and share it here.
+
+---
+
+Then proceed to Step 7 for the remaining settings that apply to both upload methods.
+
+---
+
+## Step 7 — Final settings in YouTube Studio
+
+After the upload is complete, open the video in YouTube Studio → **Details** tab → **Show more** and complete these settings (they cannot be set during upload):
 
 - [ ] **Altered Content** → Check "My video contains altered or synthetic content (like AI-generated content)"
 - [ ] **Remixing** → Ensure this is **OFF** (unchecked — do not allow others to remix)
@@ -125,12 +169,12 @@ Open the video in YouTube Studio → **Details** tab, then **Show more**:
 - [ ] **Like count** → Check "Show how many viewers like this video"
 
 Under **Video chapters**:
-- [ ] Allow automatic chapters (should be on by default)
+- [ ] Allow automatic chapters (should be on by default — confirm it is)
 
 Under **Featured places** and **Automatic concepts**:
 - [ ] Confirm both are enabled (YouTube enables these by default)
 
-Show the user this checklist and remind them to complete it before the video goes live (even though visibility is already set to Public, these settings matter for presentation and policy compliance).
+Show the user this checklist and remind them to complete it before the video goes live.
 
 ---
 
