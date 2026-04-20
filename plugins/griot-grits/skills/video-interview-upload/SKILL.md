@@ -13,7 +13,17 @@ Processes a new video interview from raw file to published YouTube video, includ
 - YouTube OAuth2 credentials (see `references/setup_guide.md` if this is your first time)
 - Python with required packages installed (see setup guide)
 
-The working directory should be your video-processing folder.
+---
+
+## Step 0 — Determine the working directory
+
+Resolve the video processing folder using this priority order:
+
+1. **Explicit path in the skill call** — if the user passed a folder path or file path when invoking the skill (e.g., "process /home/shgriffi/videos/interview.mp4"), use that directory (or the file's parent directory).
+2. **Environment variable** — if `GNG_VIDEO_DIR` is set, use that path.
+3. **Current working directory** — fall back to wherever Claude Code is currently running.
+
+All subsequent file operations (locating the video, reading the transcript, writing outputs, checking for credentials) are relative to this resolved directory. Tell the user which directory is being used before proceeding.
 
 ---
 
