@@ -17,7 +17,18 @@ The working directory should be your video-processing folder.
 
 ---
 
-## Step 1 — Locate the video and transcript
+## Step 1 — Fetch the filter list
+
+Before anything else, fetch the latest filters.yaml from GitHub:
+```
+https://raw.githubusercontent.com/griot-and-grits/gng-web/refs/heads/main/metadata/filters.yaml
+```
+
+This is the working copy for tag selection in Step 4. If the fetch succeeds, use it. If it fails (network unavailable), fall back to the bundled copy at `references/filters.yaml` and note that to the user so they know it may be slightly out of date.
+
+---
+
+## Step 2 — Locate the video and transcript
 
 Look in the current directory for:
 - A `.mp4` or `.mkv` file — this is the video to upload
@@ -25,13 +36,13 @@ Look in the current directory for:
 
 If the user mentions a specific filename, use that. If multiple video files exist, ask which one.
 
-**If a `.txt` transcript file exists:** use it directly — skip Step 2.
+**If a `.txt` transcript file exists:** use it directly — skip Step 3.
 
-**If no transcript exists:** proceed to Step 2.
+**If no transcript exists:** proceed to Step 3.
 
 ---
 
-## Step 2 — Transcribe the audio (if needed)
+## Step 3 — Transcribe the audio (if needed)
 
 Run the transcription script:
 
@@ -49,16 +60,9 @@ pip install openai-whisper
 
 ---
 
-## Step 3 — Generate tags
+## Step 4 — Generate tags
 
-Fetch the current filter list from GitHub:
-```
-https://raw.githubusercontent.com/griot-and-grits/gng-web/refs/heads/main/metadata/filters.yaml
-```
-
-If the fetch fails (network unavailable), use the bundled fallback at `references/filters.yaml` instead.
-
-Read the transcript carefully. Select tags from the fetched list that genuinely apply — think about themes, locations, people, historical periods, and topics that a researcher or viewer might use to find this video.
+Using the filter list fetched in Step 1, read the transcript carefully and select tags that genuinely apply — think about themes, locations, people, historical periods, and topics that a researcher or viewer might use to find this video.
 
 **Rules:**
 - **Use exact names only.** Every tag you select must be copied character-for-character from the YAML file — the `name` field under `tags` or `people`. Do not paraphrase, abbreviate, or invent similar-sounding alternatives. For example, if the list has `"Church Life"` and `"Faith"` as separate entries, do not combine them into `"Faith & Church"`. If the list has `"David E. Reid"`, do not shorten it to `"David Reid"`.
@@ -70,7 +74,7 @@ Present the selected tags to the user and confirm before proceeding.
 
 ---
 
-## Step 4 — Generate YouTube metadata
+## Step 5 — Generate YouTube metadata
 
 Based on the transcript, generate:
 
@@ -81,13 +85,13 @@ Too generic: `Griot and Grits - Interview About Medical History`
 
 **Description:** One paragraph (4–6 sentences). Summarize who is speaking, what they discuss, why it matters, and what time period or location it covers. Write for someone discovering this video cold — give them enough to know if this story is relevant to their research or interests. Don't use bullet points.
 
-**Tags:** Use the confirmed tags from Step 3 as the YouTube tags list.
+**Tags:** Use the confirmed tags from Step 4 as the YouTube tags list.
 
 Show the user the title, description, and tags together and ask for approval or changes before uploading.
 
 ---
 
-## Step 5 — Upload to YouTube
+## Step 6 — Upload to YouTube
 
 Once the user approves the metadata, run the upload script:
 
@@ -109,7 +113,7 @@ When the upload completes, the script prints the YouTube video URL. Share it wit
 
 ---
 
-## Step 6 — Manual settings in YouTube Studio
+## Step 7 — Manual settings in YouTube Studio
 
 After upload, the user must configure these settings manually in YouTube Studio — they cannot be set via the API:
 
