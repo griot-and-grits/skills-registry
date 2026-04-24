@@ -42,6 +42,7 @@ Read the metadata `.md` file and extract:
 - **YouTube title** — the full `Griot and Grits - ...` title
 - **YouTube description** — for extracting the story richness
 - **YouTube video URL / ID** — look for it in the `videoUrl` field in the YAML block (e.g., `https://www.youtube.com/watch?v=XXXXXXXXXXX`). Extract the video ID — you'll use it for thumbnail download in Step 3. If the user passed a YouTube URL in the skill call, use that instead.
+- **Griot and Grits collection link** — the interviewee's direct page on griotandgrits.org (e.g., `https://griotandgrits.org/collection?video=XXXXXXXXX`). This link is used as the primary watch CTA in the text message and as the "link in bio" destination for Instagram. Check if the user has provided it. If not, ask before proceeding — it is required for the text message output.
 
 Also load the `.metadata.json` file if present — it's the compact version and can supplement.
 
@@ -160,7 +161,9 @@ This message could be sent by anyone — a family member, a supporter, a volunte
 Structure:
 ```
 [Name + one vivid hook — 1 casual sentence, like you're telling someone about it over the phone]
-[Watch link — youtu.be/VIDEO_ID]
+[Griot and Grits collection link — griotandgrits.org/collection?video=XXXXX
+ This is the primary watch CTA in the text message. Do NOT use the YouTube link here —
+ we want to drive traffic to the G&G site, not YouTube.]
 [Blank line]
 [Donate ask — personal but not founder-specific. Frame it as caring about the mission:
  "This work needs our support." $20/month = one story preserved per month.
@@ -168,7 +171,13 @@ Structure:
 [Forward nudge — short and warm]
 ```
 
-The donate ask should sound like a friend encouraging another friend to support something meaningful — not a nonprofit mailer and not specific to one person sending it. Avoid "I'm trying to keep this going" or anything that only works if the founder is the one texting. Instead: "This work deserves our support," "These stories need us," "We can help keep this going." The goal is that anyone who receives this feels the personal pull and wants to give.
+The donate ask should sound like a friend encouraging another friend to support something meaningful — not a nonprofit mailer. Two things must come through clearly:
+
+1. **This is free for the Black community.** Griot and Grits preserves these stories at no cost to the people sharing them. That generosity is part of the ask — "we do this free, but we need your help to keep doing it."
+
+2. **There is urgency right now.** In the current climate — with Black history being banned from schools, erased from textbooks, and stripped from institutions — the work of preserving these voices is not just meaningful, it's necessary. The message should carry that weight without being preachy. A single line is enough: let the reader feel it.
+
+Keep the total message tight. The urgency should make it feel more important, not longer.
 
 Present all three to the user and ask for approval or changes before saving.
 
