@@ -1,0 +1,155 @@
+{
+  "skill_name": "video-interview-upload",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "I have a new interview ready — the file is `irene_clark_cadavers.mp4` and I already have a transcript at `irene_clark_cadavers.txt`.",
+      "expected_output": "Skill uses the existing transcript, fetches filters.yaml, selects appropriate tags, generates a 'Griot and Grits - ' prefixed title, a 1-paragraph description, presents metadata for approval, shows upload command with correct flags, and provides the post-upload YouTube Studio checklist.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "a0_0",
+          "name": "skips-transcription-when-txt-exists",
+          "description": "Does NOT suggest running transcribe.py since irene_clark_cadavers.txt already exists",
+          "check": "Response does not instruct the user to run Whisper or transcribe.py when a .txt file is already present"
+        },
+        {
+          "id": "a0_1",
+          "name": "title-has-griot-and-grits-prefix",
+          "description": "Generated YouTube title starts with 'Griot and Grits - '",
+          "check": "Title field in response starts with exactly 'Griot and Grits - '"
+        },
+        {
+          "id": "a0_2",
+          "name": "tags-include-medical-history",
+          "description": "Tags include 'Medical History' — directly relevant to the cadaver topic",
+          "check": "Response includes 'Medical History' in the tag list"
+        },
+        {
+          "id": "a0_3",
+          "name": "tags-include-irene-clark",
+          "description": "Tags include 'Irene Clark' from the people section of filters.yaml",
+          "check": "Response includes 'Irene Clark' in the tag list"
+        },
+        {
+          "id": "a0_4",
+          "name": "description-is-one-paragraph",
+          "description": "YouTube description is a single prose paragraph, no bullet points",
+          "check": "Description section contains no bullet points or numbered lists and reads as a single paragraph"
+        },
+        {
+          "id": "a0_5",
+          "name": "upload-command-has-correct-video",
+          "description": "Upload command references the correct video filename",
+          "check": "Upload script command includes 'irene_clark_cadavers.mp4'"
+        },
+        {
+          "id": "a0_6",
+          "name": "post-upload-checklist-present",
+          "description": "Post-upload YouTube Studio manual checklist is shown",
+          "check": "Response includes checklist items for Altered Content, Remixing, Comments moderation, and Like count"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Just dropped `david_reid_childhood.mkv` into the video folder, no transcript yet.",
+      "expected_output": "Skill detects no transcript, shows the transcribe.py command, then generates tags, title, description, upload command, and post-upload checklist.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "a1_0",
+          "name": "shows-transcription-step",
+          "description": "Skill shows the transcribe.py command since no .txt file exists",
+          "check": "Response includes a reference to running transcribe.py or the transcription script"
+        },
+        {
+          "id": "a1_1",
+          "name": "title-has-griot-and-grits-prefix",
+          "description": "Generated YouTube title starts with 'Griot and Grits - '",
+          "check": "Title field in response starts with exactly 'Griot and Grits - '"
+        },
+        {
+          "id": "a1_2",
+          "name": "tags-include-north-carolina-or-family-history",
+          "description": "Tags reflect the North Carolina/family/church themes of the interview",
+          "check": "Response includes at least one of: 'North Carolina', 'Family History', 'Church Life', 'Personal Stories' in the tag list"
+        },
+        {
+          "id": "a1_3",
+          "name": "tags-include-david-e-reid",
+          "description": "Tags include 'David E. Reid' from the people section of filters.yaml",
+          "check": "Response includes 'David E. Reid' in the tag list"
+        },
+        {
+          "id": "a1_4",
+          "name": "description-is-one-paragraph",
+          "description": "YouTube description is a single prose paragraph, no bullet points",
+          "check": "Description section contains no bullet points or numbered lists"
+        },
+        {
+          "id": "a1_5",
+          "name": "upload-command-has-correct-video",
+          "description": "Upload command references the correct video filename",
+          "check": "Upload script command includes 'david_reid_childhood.mkv'"
+        },
+        {
+          "id": "a1_6",
+          "name": "post-upload-checklist-present",
+          "description": "Post-upload YouTube Studio manual checklist is shown",
+          "check": "Response includes checklist items for Altered Content, Remixing, and Comments moderation"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I've got a new interview — `unknown_speaker.mp4`, no transcript. The person talks about growing up in Brooklyn in the 1960s, working in the garment industry, and how the neighborhood changed after white flight.",
+      "expected_output": "Skill detects no transcript, runs transcribe.py, generates tags from filters.yaml without adding unnamed person to people tags, generates title/description/upload command/checklist.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "a2_0",
+          "name": "shows-transcription-step",
+          "description": "Skill shows the transcribe.py command since no .txt file exists",
+          "check": "Response includes a reference to running transcribe.py or the transcription script"
+        },
+        {
+          "id": "a2_1",
+          "name": "title-has-griot-and-grits-prefix",
+          "description": "Generated YouTube title starts with 'Griot and Grits - '",
+          "check": "Title field in response starts with exactly 'Griot and Grits - '"
+        },
+        {
+          "id": "a2_2",
+          "name": "tags-include-brooklyn",
+          "description": "Tags include 'Brooklyn' — explicitly mentioned in the interview",
+          "check": "Response includes 'Brooklyn' in the tag list"
+        },
+        {
+          "id": "a2_3",
+          "name": "no-unnamed-person-in-people-tags",
+          "description": "Does NOT add an unknown/unnamed person to the people tags",
+          "check": "Response does not add a generic or unnamed entry to the people section of tags; only named individuals from filters.yaml people list are used"
+        },
+        {
+          "id": "a2_4",
+          "name": "description-is-one-paragraph",
+          "description": "YouTube description is a single prose paragraph, no bullet points",
+          "check": "Description section contains no bullet points or numbered lists"
+        },
+        {
+          "id": "a2_5",
+          "name": "upload-command-has-correct-video",
+          "description": "Upload command references the correct video filename",
+          "check": "Upload script command includes 'unknown_speaker.mp4'"
+        },
+        {
+          "id": "a2_6",
+          "name": "post-upload-checklist-present",
+          "description": "Post-upload YouTube Studio manual checklist is shown",
+          "check": "Response includes checklist items for Altered Content, Remixing, and Comments moderation"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "eval_id": 1,
+  "configuration": "with_skill",
+  "assertions": [
+    {
+      "text": "shows-transcription-step",
+      "passed": true,
+      "evidence": "Response shows 'python scripts/transcribe.py \"david_reid_childhood.mkv\"'"
+    },
+    {
+      "text": "title-has-griot-and-grits-prefix",
+      "passed": true,
+      "evidence": "Title: 'Griot and Grits - David Reid on Growing Up Under Sharecropping's Shadow'"
+    },
+    {
+      "text": "tags-include-north-carolina-or-family-history",
+      "passed": true,
+      "evidence": "Tags include 'North Carolina' and 'Family History'"
+    },
+    {
+      "text": "tags-include-david-e-reid",
+      "passed": false,
+      "evidence": "Tag used was 'David Reid' not 'David E. Reid' — does not exactly match the name in filters.yaml people list"
+    },
+    {
+      "text": "description-is-one-paragraph",
+      "passed": true,
+      "evidence": "Description is a single prose paragraph"
+    },
+    {
+      "text": "upload-command-has-correct-video",
+      "passed": true,
+      "evidence": "Upload command includes --video \"david_reid_childhood.mkv\""
+    },
+    {
+      "text": "post-upload-checklist-present",
+      "passed": true,
+      "evidence": "Full checklist present with Altered Content, Remixing, Comments, Like count"
+    }
+  ],
+  "pass_rate": 0.857,
+  "notes": "Fails on exact people name match. Also used tags not in filters.yaml: 'Faith & Church' (should be 'Church Life' and/or 'Faith'), 'Sharecropping', 'Slavery & Its Aftermath', 'The South', '1940s' — none of these exist in the list. Skill needs stronger instruction to use only exact tag names."
+}
