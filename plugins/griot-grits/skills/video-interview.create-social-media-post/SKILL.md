@@ -41,7 +41,7 @@ Read the metadata `.md` file and extract:
 - **Historical context** — years and locations from the interview
 - **YouTube title** — the full `Griot and Grits - ...` title
 - **YouTube description** — for extracting the story richness
-- **YouTube video URL / ID** — look for it in the `videoUrl` field in the YAML block (e.g., `https://www.youtube.com/watch?v=KZ7Hn5JAjwQ`). Extract the video ID — you'll use it for thumbnail download in Step 3. If the user passed a YouTube URL in the skill call, use that instead.
+- **YouTube video URL / ID** — look for it in the `videoUrl` field in the YAML block (e.g., `https://www.youtube.com/watch?v=XXXXXXXXXXX`). Extract the video ID — you'll use it for thumbnail download in Step 3. If the user passed a YouTube URL in the skill call, use that instead.
 
 Also load the `.metadata.json` file if present — it's the compact version and can supplement.
 
@@ -57,7 +57,7 @@ These specific details are the raw material for the caption. Generic phrases don
 
 ## Step 2 — Generate the caption
 
-The goal of this post is not just to attract new followers — it's to reach the people who already know and love the person being interviewed. When Ann Moore's daughter sees this post, she should feel compelled to share it. When someone from Washington, NC or Brownsville recognizes the story, they should tag their cousins. Write for the people closest to the story first. Their shares will reach everyone else.
+The goal of this post is not just to attract new followers — it's to reach the people who already know and love the person being interviewed. When the interviewee's family sees this post, they should feel compelled to share it. When someone from their hometown or neighborhood recognizes the story, they should tag their cousins. Write for the people closest to the story first. Their shares will reach everyone else.
 
 ### Brand voice
 
@@ -153,7 +153,24 @@ Generate both variants by default:
 
 **Facebook version** — Same core copy but slightly expanded — one or two more lines of story context, since Facebook audiences read more. Embed the YouTube link directly in the post body (not just "link in bio"). For the donate ask, add one more sentence of context about the mission: "Every $20/month preserves one story — one voice — for the people who come after us." Include the give link as a clickable URL. Reduce hashtags to 5–8 most relevant. Make the share invitation even more direct: Facebook's share mechanics mean explicitly asking people to share or tag actually works better here.
 
-Present both to the user and ask for approval or changes before saving.
+**Text message version** — A short, warm message someone can forward to family over SMS or iMessage. Aim for under 400 characters (2–3 SMS segments). No hashtags. No marketing language. Write it the way you'd text a cousin: "Hey, you need to see this."
+
+This message could be sent by anyone — a family member, a supporter, a volunteer. Write it so it sounds like a text from a friend who genuinely cares: warm, direct, no formality. The video is the hook, but the **main ask is $20/month** to help keep this work going.
+
+Structure:
+```
+[Name + one vivid hook — 1 casual sentence, like you're telling someone about it over the phone]
+[Watch link — youtu.be/VIDEO_ID]
+[Blank line]
+[Donate ask — personal but not founder-specific. Frame it as caring about the mission:
+ "This work needs our support." $20/month = one story preserved per month.
+ give.griotandgrits.org]
+[Forward nudge — short and warm]
+```
+
+The donate ask should sound like a friend encouraging another friend to support something meaningful — not a nonprofit mailer and not specific to one person sending it. Avoid "I'm trying to keep this going" or anything that only works if the founder is the one texting. Instead: "This work deserves our support," "These stories need us," "We can help keep this going." The goal is that anyone who receives this feels the personal pull and wants to give.
+
+Present all three to the user and ask for approval or changes before saving.
 
 ---
 
@@ -231,10 +248,14 @@ pip install Pillow
 Save to the output directory (same as the metadata file's directory):
 
 - `<video_basename>_instagram.txt` — the Instagram caption (ready to copy-paste)
-- `<video_basename>_facebook.txt` — the Facebook caption (if generated)
+- `<video_basename>_facebook.txt` — the Facebook caption
+- `<video_basename>_text.txt` — the SMS/text message version
 - `<video_basename>_social.jpg` — the branded thumbnail image
 
-Confirm the saved file paths to the user. Tell them what to do next: copy the caption, pair it with the image, and post. If the YouTube video is live, remind them to include the YouTube link in the Facebook post body (not just the image caption).
+Confirm the saved file paths to the user. For each output, give one line on how to use it:
+- **Instagram** — upload `_social.jpg` + paste `_instagram.txt`. Update bio link to the video page on griotandgrits.org.
+- **Facebook** — upload `_social.jpg` + paste `_facebook.txt`. The YouTube link is already in the body.
+- **Text message** — open `_text.txt`, copy, and send to family. Encourage them to forward it.
 
 ---
 
