@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "griot-grits",
-      "description": "All Griot and Grits skills for Claude Code",
+      "description": "Skills for the Griot and Grits interview preservation workflow: generate publication-ready metadata from transcripts (video-interview.create-metadata), upload interviews to YouTube (video-interview.upload), and create branded Instagram/Facebook posts with share-forward captions and a $20/month donate ask (video-interview.create-social-media-post).",
       "category": "productivity",
       "source": "./plugins/griot-grits",
       "homepage": "https://github.com/griot-and-grits/skills-registry"
