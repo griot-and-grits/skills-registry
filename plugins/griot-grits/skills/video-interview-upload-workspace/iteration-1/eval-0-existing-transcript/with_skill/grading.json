@@ -1,0 +1,43 @@
+{
+  "eval_id": 0,
+  "configuration": "with_skill",
+  "assertions": [
+    {
+      "text": "skips-transcription-when-txt-exists",
+      "passed": true,
+      "evidence": "Response explicitly says 'Skipped — transcript already exists at irene_clark_cadavers.txt' and does not show transcribe.py command"
+    },
+    {
+      "text": "title-has-griot-and-grits-prefix",
+      "passed": true,
+      "evidence": "Title: 'Griot and Grits - Irene Clark on Black Prisoners' Bodies and Medical Schools'"
+    },
+    {
+      "text": "tags-include-medical-history",
+      "passed": true,
+      "evidence": "Tags list includes 'Medical History'"
+    },
+    {
+      "text": "tags-include-irene-clark",
+      "passed": true,
+      "evidence": "Tags list includes 'Irene Clark' from the people section"
+    },
+    {
+      "text": "description-is-one-paragraph",
+      "passed": true,
+      "evidence": "Description is a single prose paragraph with no bullets or numbered lists"
+    },
+    {
+      "text": "upload-command-has-correct-video",
+      "passed": true,
+      "evidence": "Upload command includes --video \"irene_clark_cadavers.mp4\""
+    },
+    {
+      "text": "post-upload-checklist-present",
+      "passed": true,
+      "evidence": "Checklist includes Altered Content, Remixing, Comments, and Like count items"
+    }
+  ],
+  "pass_rate": 1.0,
+  "notes": "All assertions pass. All tags used are exact matches from filters.yaml."
+}

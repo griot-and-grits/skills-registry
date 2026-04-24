@@ -1,0 +1,187 @@
+{
+  "metadata": {
+    "skill_name": "video-interview-upload",
+    "skill_path": "/home/shgriffi/dev/griot_grits/skills-registry/plugins/griot-grits/skills/video-interview-upload",
+    "executor_model": "claude-sonnet-4-6",
+    "analyzer_model": "claude-sonnet-4-6",
+    "timestamp": "2026-04-20T01:13:00Z",
+    "evals_run": ["existing-transcript", "no-transcript-whisper", "unknown-speaker"],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "eval_name": "existing-transcript",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 76.7,
+        "tokens": 33664,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "skips-transcription-when-txt-exists", "passed": true, "evidence": "Explicitly skipped transcription since .txt file existed"},
+        {"text": "title-has-griot-and-grits-prefix", "passed": true, "evidence": "Title: Griot and Grits - Irene Clark on Black Prisoners Bodies and Medical Schools"},
+        {"text": "tags-include-medical-history", "passed": true, "evidence": "Medical History in tags"},
+        {"text": "tags-include-irene-clark", "passed": true, "evidence": "Irene Clark in people tags"},
+        {"text": "description-is-one-paragraph", "passed": true, "evidence": "Single prose paragraph, no bullets"},
+        {"text": "upload-command-has-correct-video", "passed": true, "evidence": "--video irene_clark_cadavers.mp4"},
+        {"text": "post-upload-checklist-present", "passed": true, "evidence": "Full checklist with Altered Content, Remixing, Comments, Like count"}
+      ],
+      "notes": ["All tags used were exact matches from filters.yaml"]
+    },
+    {
+      "eval_id": 0,
+      "eval_name": "existing-transcript",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 54.9,
+        "tokens": 17050,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "skips-transcription-when-txt-exists", "passed": true, "evidence": "Skipped transcription"},
+        {"text": "title-has-griot-and-grits-prefix", "passed": true, "evidence": "Title had correct prefix"},
+        {"text": "tags-include-medical-history", "passed": true, "evidence": "Medical History in tags"},
+        {"text": "tags-include-irene-clark", "passed": true, "evidence": "Irene Clark in tags"},
+        {"text": "description-is-one-paragraph", "passed": true, "evidence": "Single paragraph"},
+        {"text": "upload-command-has-correct-video", "passed": true, "evidence": "Correct video filename"},
+        {"text": "post-upload-checklist-present", "passed": true, "evidence": "Checklist present"}
+      ],
+      "notes": ["Baseline contaminated — subagent read SKILL.md"]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "no-transcript-whisper",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.857,
+        "passed": 6,
+        "failed": 1,
+        "total": 7,
+        "time_seconds": 69.1,
+        "tokens": 16932,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "shows-transcription-step", "passed": true, "evidence": "Showed python scripts/transcribe.py command"},
+        {"text": "title-has-griot-and-grits-prefix", "passed": true, "evidence": "Title: Griot and Grits - David Reid on Growing Up Under Sharecroppers Shadow"},
+        {"text": "tags-include-north-carolina-or-family-history", "passed": true, "evidence": "North Carolina and Family History in tags"},
+        {"text": "tags-include-david-e-reid", "passed": false, "evidence": "Used David Reid not David E. Reid — does not match exact name in filters.yaml"},
+        {"text": "description-is-one-paragraph", "passed": true, "evidence": "Single prose paragraph"},
+        {"text": "upload-command-has-correct-video", "passed": true, "evidence": "--video david_reid_childhood.mkv"},
+        {"text": "post-upload-checklist-present", "passed": true, "evidence": "Full checklist present"}
+      ],
+      "notes": ["Also invented tags not in filters.yaml: Faith & Church, Sharecropping, Slavery & Its Aftermath, The South, 1940s"]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "no-transcript-whisper",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.857,
+        "passed": 6,
+        "failed": 1,
+        "total": 7,
+        "time_seconds": 71.1,
+        "tokens": 23529,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "shows-transcription-step", "passed": true, "evidence": "Showed transcribe.py command"},
+        {"text": "title-has-griot-and-grits-prefix", "passed": true, "evidence": "Title had correct prefix"},
+        {"text": "tags-include-north-carolina-or-family-history", "passed": true, "evidence": "North Carolina referenced"},
+        {"text": "tags-include-david-e-reid", "passed": false, "evidence": "Used David Reid not David E. Reid"},
+        {"text": "description-is-one-paragraph", "passed": true, "evidence": "Single paragraph"},
+        {"text": "upload-command-has-correct-video", "passed": true, "evidence": "Correct filename"},
+        {"text": "post-upload-checklist-present", "passed": true, "evidence": "Checklist present"}
+      ],
+      "notes": ["Same tag invention failure as with_skill"]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "unknown-speaker",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 80.7,
+        "tokens": 17659,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "shows-transcription-step", "passed": true, "evidence": "Showed transcribe.py command"},
+        {"text": "title-has-griot-and-grits-prefix", "passed": true, "evidence": "Title: Griot and Grits - Brooklyn, the Garment District, and Being Just Labor"},
+        {"text": "tags-include-brooklyn", "passed": true, "evidence": "Brooklyn first in tag list"},
+        {"text": "no-unnamed-person-in-people-tags", "passed": true, "evidence": "Explicitly omitted unnamed speaker with clear reasoning"},
+        {"text": "description-is-one-paragraph", "passed": true, "evidence": "Single prose paragraph"},
+        {"text": "upload-command-has-correct-video", "passed": true, "evidence": "--video unknown_speaker.mp4"},
+        {"text": "post-upload-checklist-present", "passed": true, "evidence": "Full checklist present"}
+      ],
+      "notes": ["Invented off-list tags: New York City, 1960s, Migration & Movement, Housing & Neighborhoods, Women's History, Labor History"]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "unknown-speaker",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 66.0,
+        "tokens": 17863,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "shows-transcription-step", "passed": true, "evidence": "Showed transcribe.py command"},
+        {"text": "title-has-griot-and-grits-prefix", "passed": true, "evidence": "Title had correct prefix"},
+        {"text": "tags-include-brooklyn", "passed": true, "evidence": "Brooklyn in tags"},
+        {"text": "no-unnamed-person-in-people-tags", "passed": true, "evidence": "Also correctly omitted unnamed person"},
+        {"text": "description-is-one-paragraph", "passed": true, "evidence": "Single paragraph"},
+        {"text": "upload-command-has-correct-video", "passed": true, "evidence": "Correct filename"},
+        {"text": "post-upload-checklist-present", "passed": true, "evidence": "Checklist present"}
+      ],
+      "notes": ["Baseline also invented off-list tags"]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {"mean": 0.952, "stddev": 0.083, "min": 0.857, "max": 1.0},
+      "time_seconds": {"mean": 75.5, "stddev": 5.9, "min": 69.1, "max": 80.7},
+      "tokens": {"mean": 22752, "stddev": 9457, "min": 16932, "max": 33664}
+    },
+    "without_skill": {
+      "pass_rate": {"mean": 0.952, "stddev": 0.083, "min": 0.857, "max": 1.0},
+      "time_seconds": {"mean": 64.0, "stddev": 8.2, "min": 54.9, "max": 71.1},
+      "tokens": {"mean": 19481, "stddev": 3443, "min": 17050, "max": 23529}
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "+11.5",
+      "tokens": "+3271"
+    }
+  },
+  "notes": [
+    "IMPORTANT: Baseline runs were contaminated — subagents read SKILL.md even when not instructed. The 0.00 pass rate delta does NOT mean the skill adds no value.",
+    "CRITICAL FLAW: Both configs invented tags not in filters.yaml. Skill must be rewritten to enforce exact-match-only tag selection.",
+    "Eval 1 fails 'David E. Reid' exact name — skill needs to state people tags must use exact name as it appears in filters.yaml.",
+    "Eval 2 correctly handled unknown speaker (no people tag) — this is the skill's best behavior.",
+    "New assertion needed for iteration 2: verify every selected tag exactly matches a name in filters.yaml."
+  ]
+}

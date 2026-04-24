@@ -1,0 +1,43 @@
+{
+  "eval_id": 1,
+  "configuration": "without_skill",
+  "assertions": [
+    {
+      "text": "shows-transcription-step",
+      "passed": true,
+      "evidence": "Baseline showed transcribe.py command"
+    },
+    {
+      "text": "title-has-griot-and-grits-prefix",
+      "passed": true,
+      "evidence": "Title: 'Griot and Grits - David Reid on Growing Up Black in 1940s North Carolina'"
+    },
+    {
+      "text": "tags-include-north-carolina-or-family-history",
+      "passed": true,
+      "evidence": "North Carolina referenced"
+    },
+    {
+      "text": "tags-include-david-e-reid",
+      "passed": false,
+      "evidence": "Baseline used 'David Reid' rather than exact 'David E. Reid' from filters.yaml"
+    },
+    {
+      "text": "description-is-one-paragraph",
+      "passed": true,
+      "evidence": "Description was a single paragraph"
+    },
+    {
+      "text": "upload-command-has-correct-video",
+      "passed": true,
+      "evidence": "Referenced david_reid_childhood.mkv"
+    },
+    {
+      "text": "post-upload-checklist-present",
+      "passed": true,
+      "evidence": "Checklist present"
+    }
+  ],
+  "pass_rate": 0.857,
+  "notes": "Baseline also invented tags not in filters.yaml. Same failure mode as with_skill — this is a skill design problem, not a triggering problem."
+}

@@ -1,0 +1,43 @@
+{
+  "eval_id": 0,
+  "configuration": "without_skill",
+  "assertions": [
+    {
+      "text": "skips-transcription-when-txt-exists",
+      "passed": true,
+      "evidence": "Baseline also skipped transcription since transcript was provided"
+    },
+    {
+      "text": "title-has-griot-and-grits-prefix",
+      "passed": true,
+      "evidence": "Title: 'Griot and Grits - Mrs. Clark on Black Prisoner Bodies and Medical Schools'"
+    },
+    {
+      "text": "tags-include-medical-history",
+      "passed": true,
+      "evidence": "Baseline included 'Medical History' in tags"
+    },
+    {
+      "text": "tags-include-irene-clark",
+      "passed": true,
+      "evidence": "Baseline included 'Irene Clark' in people tags"
+    },
+    {
+      "text": "description-is-one-paragraph",
+      "passed": true,
+      "evidence": "Description was a single paragraph"
+    },
+    {
+      "text": "upload-command-has-correct-video",
+      "passed": true,
+      "evidence": "Upload command referenced irene_clark_cadavers.mp4"
+    },
+    {
+      "text": "post-upload-checklist-present",
+      "passed": true,
+      "evidence": "Post-upload checklist was present"
+    }
+  ],
+  "pass_rate": 1.0,
+  "notes": "Baseline read SKILL.md so results are contaminated — not a clean baseline. Both pass similarly."
+}

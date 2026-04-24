@@ -1,0 +1,56 @@
+{
+  "eval_id": 0,
+  "eval_name": "existing-transcript",
+  "prompt": "I have a new interview ready — the file is `irene_clark_cadavers.mp4` and I already have a transcript at `irene_clark_cadavers.txt`.",
+  "assertions": [
+    {
+      "id": "a0_0",
+      "name": "skips-transcription-when-txt-exists",
+      "description": "Does NOT suggest running transcribe.py since irene_clark_cadavers.txt already exists",
+      "check": "Response does not instruct the user to run Whisper or transcribe.py when a .txt file is already present",
+      "result": "PASS"
+    },
+    {
+      "id": "a0_1",
+      "name": "title-has-griot-and-grits-prefix",
+      "description": "Generated YouTube title starts with 'Griot and Grits - '",
+      "check": "Title field in response starts with exactly 'Griot and Grits - '",
+      "result": "PASS"
+    },
+    {
+      "id": "a0_2",
+      "name": "tags-include-medical-history",
+      "description": "Tags include 'Medical History' — directly relevant to the cadaver topic",
+      "check": "Response includes 'Medical History' in the tag list",
+      "result": "PASS"
+    },
+    {
+      "id": "a0_3",
+      "name": "tags-include-irene-clark",
+      "description": "Tags include 'Irene Clark' from the people section of filters.yaml",
+      "check": "Response includes 'Irene Clark' in the tag list",
+      "result": "PASS"
+    },
+    {
+      "id": "a0_4",
+      "name": "description-is-one-paragraph",
+      "description": "YouTube description is a single prose paragraph, no bullet points",
+      "check": "Description section contains no bullet points or numbered lists and reads as a single paragraph",
+      "result": "PASS"
+    },
+    {
+      "id": "a0_5",
+      "name": "upload-command-has-correct-video",
+      "description": "Upload command references the correct video filename",
+      "check": "Upload script command includes 'irene_clark_cadavers.mp4'",
+      "result": "PASS"
+    },
+    {
+      "id": "a0_6",
+      "name": "post-upload-checklist-present",
+      "description": "Post-upload YouTube Studio manual checklist is shown",
+      "check": "Response includes checklist items for Altered Content, Remixing, Comments moderation, and Like count",
+      "result": "PASS"
+    }
+  ]
+}
