@@ -1,0 +1,119 @@
+{
+  "skill_name": "video-interview.create-social-media-post",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Create a social media post for the Ann E. Moore interview. The metadata file is at /home/shgriffi/videos/output/GNG_AEM_001_Chpt_1_compressed_20260423-210250.md and the YouTube video is https://www.youtube.com/watch?v=KZ7Hn5JAjwQ. Generate both Instagram and Facebook captions and create the branded thumbnail image. Save everything to /home/shgriffi/videos/output/.",
+      "expected_output": "Instagram and Facebook captions centered on Ann E. Moore personally, with specific details from the interview (1942, Washington NC, 1949, Brownsville Brooklyn, corner store, gas stove, Joe Louis, Jackie Robinson, Great Migration). Both posts must include an explicit share/tag invitation. Instagram caption saved as a .txt file. Facebook version includes the YouTube link in the body. Branded 1080x1080 social image saved as a .jpg with Ann's name and subtitle visible.",
+      "files": [
+        "/home/shgriffi/videos/output/GNG_AEM_001_Chpt_1_compressed_20260423-210250.md"
+      ],
+      "assertions": [
+        {
+          "text": "Instagram caption names Ann E. Moore in the first two lines",
+          "type": "qualitative"
+        },
+        {
+          "text": "Instagram caption includes at least one specific detail from the metadata (year, place, or named person)",
+          "type": "qualitative"
+        },
+        {
+          "text": "Instagram caption contains an explicit sharing invitation (e.g. 'tag', 'share', 'pass this on')",
+          "type": "qualitative"
+        },
+        {
+          "text": "Instagram caption includes the brand hashtag #GriotAndGrits",
+          "type": "qualitative"
+        },
+        {
+          "text": "Instagram caption includes at least 15 hashtags",
+          "type": "qualitative"
+        },
+        {
+          "text": "Facebook caption embeds the YouTube URL directly in the post body",
+          "type": "qualitative"
+        },
+        {
+          "text": "Facebook caption contains an explicit sharing invitation",
+          "type": "qualitative"
+        },
+        {
+          "text": "A .jpg social image file is saved to the output directory",
+          "type": "qualitative"
+        },
+        {
+          "text": "Caption files (.txt) are saved to the output directory",
+          "type": "qualitative"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "make an instagram post for the ann moore interview — it's in /home/shgriffi/videos/output/. the video is already on youtube at https://www.youtube.com/watch?v=KZ7Hn5JAjwQ",
+      "expected_output": "Skill handles casual phrasing and finds the most recent metadata file in the output directory. Generates an Instagram caption centered on Ann E. Moore personally with specific story details, a share invitation, and appropriate hashtags. Creates the branded image using the YouTube thumbnail. Saves outputs to the output directory.",
+      "files": [
+        "/home/shgriffi/videos/output/GNG_AEM_001_Chpt_1_compressed_20260423-210250.md"
+      ],
+      "assertions": [
+        {
+          "text": "Skill locates the metadata file from the output directory without being given the exact filename",
+          "type": "qualitative"
+        },
+        {
+          "text": "Instagram caption is generated and centers Ann E. Moore by name",
+          "type": "qualitative"
+        },
+        {
+          "text": "Caption includes specific story details, not just generic Black history language",
+          "type": "qualitative"
+        },
+        {
+          "text": "Caption includes an explicit share invitation",
+          "type": "qualitative"
+        },
+        {
+          "text": "Branded image is created from the YouTube thumbnail",
+          "type": "qualitative"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Create Instagram and Facebook posts for the Ann E. Moore interview at /home/shgriffi/videos/output/GNG_AEM_001_Chpt_1_compressed_20260423-210250.md. The video ID is KZ7Hn5JAjwQ. Make the caption feel like it's written for her family and community — people who know her and will want to share it.",
+      "expected_output": "Captions written with a deeply personal, community-facing voice. Ann Moore's name is prominent. The specific details (Great Migration, Washington NC to Brownsville Brooklyn, Joe Louis, Jackie Robinson, 1942/1949) make the post feel real and earned, not generic. The share invitation is warm and direct. Facebook version is slightly richer in detail with the YouTube link embedded. Both captions feel like they could stop the scroll of someone who knows her.",
+      "files": [
+        "/home/shgriffi/videos/output/GNG_AEM_001_Chpt_1_compressed_20260423-210250.md"
+      ],
+      "assertions": [
+        {
+          "text": "Caption hook leads with Ann E. Moore's story (name + specific detail), not a generic cultural statement",
+          "type": "qualitative"
+        },
+        {
+          "text": "At least two specific details from the metadata description are used in the caption",
+          "type": "qualitative"
+        },
+        {
+          "text": "The sharing invitation is warm and community-facing (not a generic 'share this post')",
+          "type": "qualitative"
+        },
+        {
+          "text": "Instagram caption is under 2200 characters total",
+          "type": "qualitative"
+        },
+        {
+          "text": "Facebook caption includes the YouTube link https://www.youtube.com/watch?v=KZ7Hn5JAjwQ",
+          "type": "qualitative"
+        },
+        {
+          "text": "Both outputs are saved as .txt files",
+          "type": "qualitative"
+        },
+        {
+          "text": "Branded image is saved as a .jpg with Ann E. Moore's name and subtitle visible",
+          "type": "qualitative"
+        }
+      ]
+    }
+  ]
+}
