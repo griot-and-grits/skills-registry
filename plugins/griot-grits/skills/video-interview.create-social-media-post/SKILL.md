@@ -160,7 +160,12 @@ This message could be sent by anyone — a family member, a supporter, a volunte
 
 Structure:
 ```
-[Name + one vivid hook — 1 casual sentence, like you're telling someone about it over the phone]
+[HOOK — 1 sentence. Open with a relationship title followed by the full name in parentheses,
+ then the vivid story detail. The relationship title is what makes this feel like it came
+ from someone who knows them — "Grandma's (Ann E. Moore) story", "Uncle's (Rickey Thomas)
+ story", "Miss Irene's (Irene Clark) story". Ask the user what relationship title to use
+ if they haven't provided one — it makes the message feel personal and targeted rather
+ than broadcast. Follow with the one hook detail and the chapter/duration.]
 [Griot and Grits collection link — griotandgrits.org/collection?video=XXXXX
  This is the primary watch CTA in the text message. Do NOT use the YouTube link here —
  we want to drive traffic to the G&G site, not YouTube.]
